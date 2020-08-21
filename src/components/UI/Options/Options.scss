@@ -1,0 +1,92 @@
+.selectBox {
+    color: #c4c4c4;
+    font-weight: 500;
+    position: relative;
+    font-size: 13px;
+    perspective: 300px;
+    cursor: pointer;
+
+    &::before {
+        content: "";
+        display: block;
+        top: 16px;
+        right: 6px;
+        z-index: 5;
+        position: absolute;
+        border-top: 4px solid #4A4A4A;
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        border-bottom: 0px solid transparent;
+        transition: all linear .2s;
+    }
+    
+    label {
+        font-size: 12px;
+        padding: 3px 3px 5px 0px;
+    }
+
+
+    &__options {
+        font-size: 15px;
+        padding-top: 5px;
+        max-height: 30px;
+        width: calc(100% - 10px);
+        border: solid 1px #c4c4c4;
+        left: 50%;
+        top: calc(100% - 5px);
+        position: absolute;
+        z-index: 0;
+        transform-origin: top;
+        transform: rotateX(-90deg) translateX(-50%);
+        overflow: scroll;
+        box-shadow: inset 0px -5px 10px -6px rgba(0,0,0,0);
+        transition: all linear .3s .3s, max-height .3s;
+    }
+    
+    &__selected {
+        padding: 8px 7px;
+        background: #fff;
+        border-radius: 3px;
+        border: solid 1px #c4c4c4;
+        z-index: 2;
+        position: relative;
+    }
+    
+    
+    &__item {
+        height: 30px;
+        line-height: 14px;
+        padding: 7px 5px 5px;
+        background: #f7f7f7;
+        box-sizing: border-box;
+        border-bottom: solid 1px #c4c4c4;
+        transition: all linear .2s;
+
+        &:hover {
+            background: #fff;
+        }
+
+        &:last-child {
+            border: none;
+        }
+    }
+
+    &--active {
+        &::before {
+            transform: rotate(-180deg);
+        }
+
+        .selectBox__options {
+            max-height: 95px;
+            transform: rotateX(0deg) translateX(-50%);
+            transition: all linear .5s .3s, transform linear .4s;
+            box-shadow: inset 0px -5px 10px -6px rgba(0,0,0,0.2);
+        }
+    }
+
+    @media (max-width: 768px) {
+        &__item {
+            height: auto;
+        }
+    }
+}
