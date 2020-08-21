@@ -38,7 +38,7 @@
         z-index: 0;
         transform-origin: top;
         transform: rotateX(-90deg) translateX(-50%);
-        overflow: scroll;
+        overflow-y: scroll;
         box-shadow: inset 0px -5px 10px -6px rgba(0,0,0,0);
         transition: all linear .3s .3s, max-height .3s;
     }
@@ -71,11 +71,24 @@
         }
     }
 
+    &--wLabel {
+        .selectBox__selected span {
+            font-weight: bold;
+        }
+    }
+
     &--active {
         &::before {
             transform: rotate(-180deg);
         }
+        .selectBox__selected span {
+            color: #4A4A4A;
+        }
 
+        .selectBox__selected {
+            border-color: #4A4A4A;
+        
+        }
         .selectBox__options {
             max-height: 95px;
             transform: rotateX(0deg) translateX(-50%);

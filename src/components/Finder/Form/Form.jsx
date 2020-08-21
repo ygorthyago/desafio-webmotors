@@ -1,20 +1,19 @@
 import './Form.scss';
 import React from 'react'
 import {ReactComponent as MapIcon} from '../../../template/map-icon.svg';
-import GetModels from '../../WebService/GetModels';
-import GetBrands from '../../WebService/GetBrands';
-import GetVersions from '../../WebService/GetVersions';
+import UIModels from '../../UI/WebService/Models';
+import UIBrands from '../../UI/WebService/Brands';
+import UIVersions from '../../UI/WebService/Versions';
 import UIOptions from '../../UI/Options/Options';
-
 
 export default class Form extends React.Component {
 
     constructor(props) {
         super(props)
   
-        this.handleBrandChange = this.handleBrandChange.bind(this)
-        this.handleModelChange = this.handleModelChange.bind(this)
-        this.handleClearFilters = this.handleClearFilters.bind(this)
+        this.handleBrandChange = this.handleBrandChange.bind(this);
+        this.handleModelChange = this.handleModelChange.bind(this);
+        this.handleClearFilters = this.handleClearFilters.bind(this);
     }
 
     handleBrandChange(value) {
@@ -29,11 +28,10 @@ export default class Form extends React.Component {
         const currentState = this.state.clearFilters;
         this.setState({ clearFilters: !currentState });
 
-        var inputs = document.getElementsByTagName('input');
-        for(var x = 0; x < inputs.length; x++){
+        let inputs = document.getElementsByTagName('input');
+        for(let x = 0; x < inputs.length; x++){
             inputs[x].checked = false
-        }   
-
+        }
     }
 
     state = {
@@ -42,7 +40,6 @@ export default class Form extends React.Component {
         clearFilters: "0",
     }
 
-        
     render () {
         return (
         <div className="formFinder">
@@ -78,11 +75,11 @@ export default class Form extends React.Component {
 
                 <div className="formFinder__halfCollumn formFinder__halfCollumn--flex">
                     <div className="formFinder__brandBox">
-                        <GetBrands clear={this.state.clearFilters} handleBrandChange={this.handleBrandChange}></GetBrands>
+                        <UIBrands clear={this.state.clearFilters} handleBrandChange={this.handleBrandChange} />
                     </div>
 
                     <div className="formFinder__modelBox">
-                        <GetModels clear={this.state.clearFilters} handleModelChange={this.handleModelChange} MakeID={this.state.selectedBrand} />
+                        <UIModels clear={this.state.clearFilters} handleModelChange={this.handleModelChange} MakeID={this.state.selectedBrand} />
                     </div>
                 </div>
             </div>
@@ -109,7 +106,7 @@ export default class Form extends React.Component {
 
                 <div className="formFinder__halfCollumn">
                     <div className="formFinder__versionBox">
-                        <GetVersions clear={this.state.clearFilters} ModelID={this.state.selectedModel} />
+                        <UIVersions clear={this.state.clearFilters} ModelID={this.state.selectedModel} />
                     </div>
                 </div>
             </div>

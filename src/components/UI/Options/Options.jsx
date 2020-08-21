@@ -29,12 +29,12 @@ export default class Options extends React.Component {
         }
 
         if (prevProps.clear !== this.props.clear) {
-            var optionName
+            let optionName
             if (this.props.noLabel) {
                 optionName = this.props.noLabel;
             } else if (this.props.setOption) {
                 optionName = this.props.options[0].Name;
-                var optionID = this.props.options[0].ID;
+                let optionID = this.props.options[0].ID;
                 this.props.setOption(optionID)
             } else if (this.props.options[0].Name){
                 optionName = this.props.options[0].Name;
@@ -43,15 +43,13 @@ export default class Options extends React.Component {
             }
 
             this.setOption(optionName)
-
-
-            
         }
 
     }
 
     componentDidMount(prev, newest) {
         this.setState({options: this.props.options});
+        document.addEventListener('mousedown', this.handleClickOutside);
     }
 
     RenderOptions(options, type) {
@@ -86,9 +84,9 @@ export default class Options extends React.Component {
     }
 
     handleItemClick(element) {
-        var optionName = element.target.getAttribute("itemName");
+        let optionName = element.target.getAttribute("itemName");
         this.setOption(optionName)
-        var optionID = element.target.getAttribute("itemValue");
+        let optionID = element.target.getAttribute("itemValue");
         if (this.props.setOption) {
             this.props.setOption(optionID)
         }
@@ -101,7 +99,7 @@ export default class Options extends React.Component {
     }
 
     defineFirstOption() {
-        var firstOption
+        let firstOption
         if (this.props.options) {
             if (this.props.type === 'array') {
                 firstOption = this.props.options[0];
@@ -121,7 +119,6 @@ export default class Options extends React.Component {
 
     render() {
         const { options } = this.state
-        // const noLabel = this.props.noLabel
         const label = this.props.label
         const type = this.props.type
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import UIOptions from '../../components/UI/Options/Options';
+import UIOptions from '../Options/Options';
 
 const models = axios.create({
     baseURL: 'http://desafioonline.webmotors.com.br/api/OnlineChallenge/Model'

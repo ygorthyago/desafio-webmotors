@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import UIOptions from '../../components/UI/Options/Options';
+import UIOptions from '../Options/Options';
 
 const versions = axios.create({
     baseURL: 'http://desafioonline.webmotors.com.br/api/OnlineChallenge/Version'
@@ -13,6 +13,8 @@ export default class GetVersions extends React.Component {
         
         if (this.props.ModelID > 0) {
             const response = await versions.get('?ModelID=' + this.props.ModelID);
+            const allVersions = {ID: 0, Name: "Todas"}
+            response.data.unshift(allVersions);
             for (var singleVersion in response.data) {
                 versionsObj.push(response.data[singleVersion])
             };
