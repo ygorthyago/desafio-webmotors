@@ -33,9 +33,11 @@ export default class Options extends React.Component {
             if (this.props.noLabel) {
                 optionName = this.props.noLabel;
             } else if (this.props.setOption) {
-                optionName = this.props.options[0].Name;
-                let optionID = this.props.options[0].ID;
-                this.props.setOption(optionID)
+                if (this.props.options[0]){
+                    optionName = this.props.options[0].Name;
+                    let optionID = this.props.options[0].ID;
+                    this.props.setOption(optionID)
+                }
             } else if (this.props.options[0].Name){
                 optionName = this.props.options[0].Name;
             } else {

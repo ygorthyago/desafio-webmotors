@@ -31,6 +31,7 @@ export default class Form extends React.Component {
         let inputs = document.getElementsByTagName('input');
         for(let x = 0; x < inputs.length; x++){
             inputs[x].checked = false
+            inputs[x].value = null
         }
     }
 
